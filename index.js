@@ -8,18 +8,23 @@ app.use(bodyparser.urlencoded({limit:'50mb', extended:true}));
 app.use(express.json());
 app.use(express.static("public"));
 
-let con = mysql.createConnection({
-    host:"localhost",
-    user:"root",
-    password:"",
-    database:"hims"
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "*");
+    if (req.method == "OPTIONS") {
+        res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE");
+        return res.status(200).json({});
+    }
+    next();
 });
 
 app.get("/", (req, res)=>{
     res.end("HIMS back end");
 });
-
+app.use("/authentication", require("./routes/authentication"));
+app.use("/users", require("./routes/users"));
 app.use("/titles", require("./routes/titles"));
+app.use("/genders", require("./routes/genders"));
 app.use("/states", require("./routes/states"));
 app.use("/districts", require("./routes/districts"));
 
