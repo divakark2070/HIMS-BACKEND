@@ -27,6 +27,9 @@ app.use("/titles", require("./routes/titles"));
 app.use("/genders", require("./routes/genders"));
 app.use("/states", require("./routes/states"));
 app.use("/districts", require("./routes/districts"));
+app.use("/paymentmodes", require("./routes/paymentmodes"));
+app.use("/modules", require("./routes/modules"));
+app.use("/menus", require("./routes/menus"));
 
 //States APIs
 

@@ -1,13 +1,13 @@
-let Gender = require("../models/Gender");
+let Paymentmode = require("../models/Paymentmode");
 let express = require("express");
 
 let router = express.Router();
 
-router.post("/", (req, res)=>{
-    let body = req.body;
-    let object = new Gender();
-    object.id = 0;
-    object.name = body.name;
+router.post("/",(req,res)=>{
+    let body= req.body;
+    let object = new Paymentmode();
+    object.id=0;
+    object.name=body.name;
     object.save().then((result)=>{
         res.end(JSON.stringify({status:"success", data:result}));
     }, (err)=>{
@@ -15,22 +15,23 @@ router.post("/", (req, res)=>{
     })
 });
 
-router.get("/", (req, res)=>{
-    let object = new Gender();
-    object.list().then((result)=>{
-        res.end(JSON.stringify({status:"success", data:result}));
-    }, (err)=>{
-        res.end(JSON.stringify({status:"failed", data:err}));
-    })
-})
-
-router.put("/:id", (req, res)=>{
+router.put("/:id",(req,res)=>{
     let body = req.body;
-    let object = new Gender();
-    object.id = req.params.id;
-    object.name = body.name;
+    let object = new Paymentmode();
+    object.id=req.params.id;
+    object.name=body.name;
     object.save().then((result)=>{
         res.end(JSON.stringify({status:"success", data:result}));
+    },(err)=>{
+        res.end(JSON.stringify({status:"failed",data:err}))    
+    })
+});
+
+router.get("/", (req, res)=>{
+    let object = new Paymentmode();
+    object.id = req.params.id;
+    object.list().then((result)=>{
+            res.end(JSON.stringify({status:"success", data:result}));
     }, (err)=>{
         res.end(JSON.stringify({status:"failed", data:err}));
     })
@@ -38,7 +39,7 @@ router.put("/:id", (req, res)=>{
 
 
 router.get("/:id", (req, res)=>{
-    let object = new Gender();
+    let object = new Paymentmode();
     object.id = req.params.id;
     object.get().then((result)=>{
         if(result.length> 0)
@@ -50,15 +51,18 @@ router.get("/:id", (req, res)=>{
     })
 })
 
-
-router.delete("/:id", (req, res)=>{
-    let object = new Gender();
+router.delete("/:id", (req,res)=>{
+    let object = new Paymentmode();
     object.id = req.params.id;
     object.delete().then((result)=>{
-        res.end(JSON.stringify({status:"success", data:result}));
-    }, (err)=>{
-        res.end(JSON.stringify({status:"failed", data:err}));
+        res.end(JSON.stringify({status:"success",data:result}));
+    },(err)=>{
+        res.end(JSON.stringify({staus:"failed",data:err}))
     })
 })
 
-module.exports = router;
+
+
+
+
+module.exports = router; 
