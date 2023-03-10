@@ -5,7 +5,7 @@ class Module{
         this.id = 0;
         this.srno ="";
         this.name ="";
-        this.picpath= "";
+        this.picpath = "";
         this.link = "";
         this.sql = "";
         this.db = new Database();
@@ -16,7 +16,11 @@ class Module{
         this.sql = `INSERT INTO modules(srno,name,picpath,link) VALUES(${this.srno},'${this.name.replace(/'/g, "''")}','${this.picpath}','${this.link}')`;
         }
         else{
-            this.sql =`UPDATE modules SET srno=${this.srno},name='${this.name.replace(/'/g, "''")}',picpath='${this.picpath}',link='${this.link}' WHERE id = ${this.id}`;
+            this.sql =`UPDATE modules SET srno=${this.srno},name='${this.name.replace(/'/g, "''")}', `;
+            if(this.picpath !== ""){
+                this.sql += `picpath='${this.picpath}', `;
+            }
+            this.sql += `link='${this.link}' WHERE id = ${this.id}`;        
         }
 
         return new Promise((resolve, reject) => {

@@ -1,5 +1,6 @@
 let Module = require("../models/Module");
 let express = require("express");
+let fs = require("fs");
 
 let router = express.Router();
 
@@ -10,6 +11,16 @@ router.post("/",(req,res)=>{
     object.srno=body.srno;
     object.name=body.name;
     object.link=body.link;
+
+    let image = body.image;
+    if(image !== ""){
+        // console.log(image);
+        let filename = (Math.random() + 1).toString(36).substring(7);
+        fs.writeFile("public/modules/" + filename + ".png", image, 'base64', (err)=>{
+            // console.log(err);
+        });
+        object.picpath = "modules/" + filename + ".png";
+    }
     object.save().then((result)=>{
         res.end(JSON.stringify({status:"success",data:result}));
     },(err)=>{
@@ -22,8 +33,17 @@ router.put("/:id",(req,res)=>{
     let object=new Module();
     object.id=req.params.id;
     object.srno=body.srno;
-    object.name=body.name;
-    object.picpath=body.picpath;
+    object.name=body.name;    
+    let image = body.image;
+    if(image !== ""){
+        // console.log(image);
+        let filename = (Math.random() + 1).toString(36).substring(7);
+        fs.writeFile("public/modules/" + filename + ".png", image, 'base64', (err)=>{
+            // console.log(err);
+        });
+        object.picpath = "modules/" + filename + ".png";
+    }
+    
     object.link=body.link;
     object.save().then((result)=>{
         res.end(JSON.stringify({status:"success",data:result}));
