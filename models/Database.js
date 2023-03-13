@@ -11,19 +11,19 @@ class Database {
         });
     }
 
-    query(sql, promise){
+    query(sql){
         return new Promise((resolve, reject)=>{
-            this.con.connect((err)=>{
-                if(err){
-                  reject(err);
-                }
-                this.con.query(sql, promise, (err, result)=>{
+            // this.con.connect((err)=>{
+            //     if(err){
+            //       reject(err);
+            //     }
+                this.con.query(sql, (err, result)=>{
                     if(err){
                         reject(err);
                     }
                     resolve(result);
                 })
-            })
+            // })
         })
         
     }

@@ -29,6 +29,25 @@ app.use("/districts", require("./routes/districts"));
 app.use("/paymentmodes", require("./routes/paymentmodes"));
 app.use("/modules", require("./routes/modules"));
 app.use("/menus", require("./routes/menus"));
+app.use("/labs", require("./routes/labs"));
+app.use("/labtests", require("./routes/labtests"));
+app.use("/languages", require("./routes/languages"));
+app.use("/beds", require("./routes/beds"));
+app.use("/bloodgroups", require("./routes/bloodgroups"));
+app.use("/categories", require("./routes/categories"));
+app.use("/concessionauthorities", require("./routes/concessionauthorities"));
+app.use("/configurations", require("./routes/configurations"));
+app.use("/departments", require("./routes/departments"));
+app.use("/ipdoptions", require("./routes/ipdoptions"));
+app.use("/ipdservices", require("./routes/ipdservices"));
+app.use("/nationalities", require("./routes/nationalities"));
+app.use("/opdservices", require("./routes/opdservices"));
+// app.use("/relations", require("./routes/relations"));
+app.use("/religions", require("./routes/religions"));
+app.use("/rooms", require("./routes/rooms"));
+app.use("/specializations", require("./routes/specializations"));
+app.use("/usertypes", require("./routes/usertypes"));
+
 
 //States APIs
 
