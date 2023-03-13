@@ -32,7 +32,7 @@ class Menu{
     };
 
     list(){
-        this.sql= `SELECT id, title, IF(canhavechilds, "True", "False") AS child, menuid, srno, icon, link FROM menus `
+        this.sql= `SELECT id, title, IF(canhavechilds, "True", "False") AS child, menuid, srno, icon, link FROM menus ORDER BY srno`
         return new Promise((resolve, reject) => {
             this.db.query(this.sql).then((result)=>{
                 resolve(result);

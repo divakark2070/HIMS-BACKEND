@@ -47,6 +47,8 @@ app.use("/religions", require("./routes/religions"));
 app.use("/rooms", require("./routes/rooms"));
 app.use("/specializations", require("./routes/specializations"));
 app.use("/usertypes", require("./routes/usertypes"));
+app.use("/pharmacy/items", require("./routes/pharmacy/items"));
+
 
 
 //States APIs
