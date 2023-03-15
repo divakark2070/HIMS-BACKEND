@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2023 at 07:12 AM
+-- Generation Time: Mar 14, 2023 at 09:22 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -258,7 +258,12 @@ INSERT INTO `menus` (`id`, `title`, `canhavechilds`, `menuid`, `srno`, `icon`, `
 (8, 'System Config Masters', 1, 0, 10, 'metismenu-icon pe-7s-rocket', '#'),
 (9, 'Modules', 0, 8, 1, '#', 'master/modules'),
 (10, 'Menus', 0, 8, 2, '#', 'master/menus'),
-(11, 'Relations', 0, 4, 3, '#', 'master/relations');
+(11, 'Relations', 0, 4, 3, '#', 'master/relations'),
+(12, 'Lab', 1, 0, 2, 'metismenu-icon pe-7s-rocket', '#'),
+(13, 'OPD Masters', 1, 0, 3, 'metismenu-icon pe-7s-rocket', '#'),
+(14, 'Pharmacy Module', 1, 0, 4, 'metismenu-icon pe-7s-rocket', '#'),
+(15, 'Items', 0, 14, 1, 'fa-falist', 'pharmacy/items'),
+(16, 'States', 0, 4, 4, 'r', 'master/states');
 
 -- --------------------------------------------------------
 
@@ -319,13 +324,20 @@ CREATE TABLE `pha_items` (
   `id` int(11) NOT NULL,
   `mtype` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `description` text NOT NULL,
+  `description` varchar(500) NOT NULL,
   `manu_companyid` int(11) NOT NULL,
   `mark_companyid` int(11) NOT NULL,
   `subquantity` int(11) NOT NULL,
   `allowdiscount` double NOT NULL,
   `gstpercent` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pha_items`
+--
+
+INSERT INTO `pha_items` (`id`, `mtype`, `name`, `description`, `manu_companyid`, `mark_companyid`, `subquantity`, `allowdiscount`, `gstpercent`) VALUES
+(1, 'k', 'Paracetemol', 'gghggg', 1, 1, 4, 1000, 18);
 
 -- --------------------------------------------------------
 
@@ -581,7 +593,7 @@ ALTER TABLE `languages`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `modules`
@@ -599,7 +611,7 @@ ALTER TABLE `paymentmodes`
 -- AUTO_INCREMENT for table `pha_items`
 --
 ALTER TABLE `pha_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `specializations`
